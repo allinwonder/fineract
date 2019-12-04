@@ -32,6 +32,13 @@ buildscript {
   	 mavenCentral()
   	 maven { url "https://plugins.gradle.org/m2/" }
   }
+// build.gradle.kts example
+
+  repositories {
+    maven {
+			url = uri("https://d1osg35nybn3tt.cloudfront.net")
+   	}
+	}  
 
   dependencies {
      classpath 'io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE'
@@ -41,7 +48,8 @@ buildscript {
                'org.springframework.boot:spring-boot-gradle-plugin:2.1.9.RELEASE' // also change springDataJpaVersion below
      classpath "org.apache.openjpa:openjpa:$openJPAVersion"
      classpath 'com.radcortez.gradle:openjpa-gradle-plugin:3.1.0'
-     classpath 'gradle.plugin.org.nosphere.apache:creadur-rat-gradle:0.2.2'
+     classpath 'gradle.plugin.org.nosphere.apache:creadur-rat-gradle:0.2.2
+		 implementation("com.amazonaws:codeguru-profiler-java-agent:0.1.0")
   }
 }
 
