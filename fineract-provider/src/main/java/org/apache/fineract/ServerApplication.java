@@ -26,6 +26,7 @@ import org.apache.fineract.infrastructure.core.boot.db.DataSourceProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
+import software.amazon.codeguruprofilerjavaagent.Profiler;
 
 /**
  * Fineract main() application which launches Fineract in an embedded Tomcat HTTP
@@ -49,6 +50,7 @@ public class ServerApplication {
 	private static class Configuration extends AbstractApplicationConfiguration { }
 
 	public static void main(String[] args) throws Exception {
+		new Profiler.Builder().profilingGroupName("fineract").build().start();
 		ConfigurableApplicationContext ctx = SpringApplication.run(Configuration.class, args);
 		ApplicationExitUtil.waitForKeyPressToCleanlyExit(ctx);
 	}
